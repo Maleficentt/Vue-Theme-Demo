@@ -10,7 +10,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "antd-theme-generator": "file:antd-theme-generator",
+    "glob": "^7.1.6",
+    "hash.js": "^1.1.7",
     "iview": "^3.5.4",
+    "less-bundle-promise": "^1.0.7",
+    "less-plugin-npm-import": "^2.1.0",
+    "postcss": "^7.0.27",
+    "postcss-colors-only": "0.0.3",
     "vue": "^2.5.2"
   },
   "devDependencies": {

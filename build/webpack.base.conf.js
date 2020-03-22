@@ -5,7 +5,7 @@ const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const AntDesignThemePlugin = require('antd-theme-webpack-plugin')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -69,6 +69,9 @@ module.exports = {
       {
         test: /\.less$/,
         loader: "style-loader!css-loader!less-loader",
+        options: {
+          javascriptEnabled: true
+        }
       },
     ]
   },
@@ -84,9 +87,21 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   },
-  plugins: [
-    // new AntDesignThemePlugin({
-    //   antDir: path.join(__dirname, '../node_modules/iview')
-    // })
-  ]
+  // plugins: [
+  //   new AntDesignThemePlugin({
+  //     antDir: path.join(__dirname, '../node_modules/iview'),
+  //     antdStylesDir: path.join(__dirname, '../node_modules/iview/src'),
+  //     varFile: path.join(__dirname, '../src/styles/variables.less'),
+  //     indexFileName: '../index.html',
+  //     mainLessFile: path.join(__dirname, '../src/styles/index.less'),
+  //     outputFilePath: path.join(__dirname, '../dist/static/color.less'),
+  //     themeVariables: [
+  //       '@primary-color',
+  //       '@success-color',
+  //       '@error-color',
+  //       '@warning-color'
+  //     ],
+  //     generateOnce: false
+  //   })
+  // ]
 }

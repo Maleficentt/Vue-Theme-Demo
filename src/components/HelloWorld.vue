@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
-    <Button type="primary">button</Button>
-    <Button type="error">button</Button>
-    <Button type="success">button</Button>
-    <Button type="warning">button</Button>
+    <Button type="primary" @click="handleClick('primary')">button</Button>
+    <Button type="error" @click="handleClick('error')">button</Button>
+    <Button type="success" @click="handleClick('success')">button</Button>
+    <Button type="warning" @click="handleClick('warning')">button</Button>
   </div>
 </template>
 
@@ -13,6 +13,29 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    handleClick (type) {
+      switch (type) {
+        case 'primary':
+          window.less.modifyVars({
+            '@primary-color': '#00f'
+          })
+          break
+        case 'success':
+          window.less.modifyVars({
+            '@success-color': '#0f0'
+          })
+        case 'warning':
+          window.less.modifyVars({
+            '@warning-color': '#ff0'
+          })
+        case 'error':
+          window.less.modifyVars({
+            '@error-color': '#f00'
+          })
+      }
     }
   }
 }

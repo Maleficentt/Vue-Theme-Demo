@@ -321,8 +321,9 @@ function generateTheme({
     */
     varFile = varFile || path.join(antdPath, "./styles/common/index.less"); // 包含antd和自定义变量的变量文件
 
-    let content = fs.readFileSync(entry).toString(); // 读取antd样式入口文件
-    content += "\n";
+    // let content = fs.readFileSync(entry).toString(); // 读取antd样式入口文件
+    // content += "\n";
+    let content = ''
     styles.forEach(style => { // 在样式入口文件中引入所有样式文件
       content += `@import "${style}";\n`;
     });
@@ -421,7 +422,7 @@ function generateTheme({
           css = `${varName}: ${mappings[varName]};\n${css}\n`;
         });
         css = css.replace(/\\9/g, '');
-        if (outputFilePath) { 
+        if (outputFilePath) {
           fs.writeFileSync(outputFilePath, css);
           console.log(
             `🌈 Theme generated successfully. OutputFile: ${outputFilePath}`
@@ -439,10 +440,33 @@ function generateTheme({
   });
 }
 
-module.exports = {
-  generateTheme,
-  isValidColor,
-  getLessVars,
-  randomColor,
-  renderLessContent: render
-};
+// module.exports = {
+//   generateTheme,
+//   isValidColor,
+//   getLessVars,
+//   randomColor,
+//   renderLessContent: render
+// };
+
+const themeOptions = {
+  antdStylesDir: path.join(__dirname, './node_modules/iview/src'),
+  stylesDir: path.join(__dirname, './static/styles'),    //对应具体位置
+  antDir: path.join(__dirname, './node_modules/iview'), //对应具体位置
+  varFile: path.join(__dirname, './src/styles/variables.less'), //对应具体位置
+  mainLessFile: path.join(__dirname, './src/styles/index.less'), //对应具体位置
+  themeVariables: [
+    '@primary-color',
+    '@success-color',
+    '@error-color',
+    '@warning-color'
+  ],
+  indexFileName: 'index.html',
+  outputFilePath: path.join(__dirname, './static/color.less'),
+}
+
+generateTheme(themeOptions).then(less => {
+  console.log('Theme generated successfully');
+})
+  .catch(error => {
+    console.log('Error', error);
+  });

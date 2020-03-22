@@ -6,7 +6,15 @@
     <title>theme-demo</title>
   </head>
   <body>
+    <link rel="stylesheet/less" type="text/css" href="static/color.less" />
+    <script>
+        window.less = {
+            async: false,
+            env: 'production'
+        };
+    </script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script src="https://cdn.bootcss.com/less.js/2.7.3/less.min.js"></script>
   </body>
 </html>
