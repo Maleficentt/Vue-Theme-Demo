@@ -16,7 +16,7 @@
     "iview": "^3.5.4",
     "less-bundle-promise": "^1.0.7",
     "less-plugin-npm-import": "^2.1.0",
-    "postcss": "^7.0.27",
+    "postcss": "^7.0.36",
     "postcss-colors-only": "0.0.3",
     "vue": "^2.5.2"
   },
